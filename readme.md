@@ -1,6 +1,6 @@
 # CustomClip — Clipboard Translation & Automation Tool
 
-CustomClip is a lightweight background tool that automatically listens to your clipboard and processes the copied text using your configured AI model (Gemini API).  
+CustomClip is a lightweight background tool that listens to your clipboard in real time and detects copied text, sends it to your AI model, and replaces it with an improved version.
 The tool runs silently in the background, detects copied text, sends it to the API, and pastes the processed result back into your active window.
 
 It is built for speed, simplicity, and automation—once installed, it works 24/7 without showing any window or notification.
@@ -23,8 +23,7 @@ It is built for speed, simplicity, and automation—once installed, it works 24/
 
 ## 🔘 Hotkeys / Usage
 
-These hotkeys are registered as **single keys**, but on some apps Windows may not pass them through unless another key (like Delete) is pressed first.  
-This is normal because keys like End/Home/Page Up/Page Down are system navigation keys.
+These hotkeys work by detecting two keys pressed together (Delete + another key). Some apps may consume navigation keys (End/Home/PageUp/PageDown), so using Delete ensures the combo is detected reliably.
 
 | Action | Hotkey | What It Does |
 |--------|--------|--------------|
@@ -33,15 +32,33 @@ This is normal because keys like End/Home/Page Up/Page Down are system navigatio
 | Answer a Question | `Del + Page Up` | Gives a short, clear answer |
 | Define Word / Phrase | `Del + Home` | Explains a word or phrase in simple English |
 
+Note: After triggering an action, keep holding Delete will block further actions until you release and press Delete again. This prevents accidental repeats.
+
 ---
 
 ## 📸 Screenshots
 
 ### CustomClip running in background (Processes)
-![Process Screenshot](processes.png)
+![Process Screenshot](.github/assets/processes.png)
 
 ### CustomClip enabled in Startup Apps
-![Startup Screenshot](startup.png)
+![Startup Screenshot](.github/assets/startup.png)
+
+---
+
+## ✨ Feature Demonstrations
+
+### 📝 Rewrite Example
+![Rewrite Example](.github/assets/rewrite.png)
+
+### 🌍 Translate Example
+![Translate Example](.github/assets/translate.png)
+
+### 💬 Answer Example
+![Answer Example](.github/assets/answer.png)
+
+### 📘 Define Example
+![Define Example](.github/assets/define.png)
 
 ---
 
@@ -100,8 +117,6 @@ customclip.exe → Main tool (runs hidden)
 setup.exe → Adds tool to Windows Startup
 clip.go → Source code (Go)
 setup.py → Source code for setup
-process.png → Screenshot of running process
-startup.png → Screenshot of startup entry
 README.md → This guide
 ```
 
@@ -116,6 +131,12 @@ README.md → This guide
   **Task Manager → Startup Apps → customclip**
 
 ---
+
+## 🎉 Tips
+
+- ```setup.exe``` does NOT start the tool — it only adds it to Windows startup. ```customclip.exe``` must be run once manually.
+- This tool does not collect, upload, or log clipboard data. All text is processed locally except the content sent to ```Gemini API```.
+
 
 ## ✔ You're all set!
 Once both EXEs are run, CustomClip will work automatically in the background every time your PC starts.
